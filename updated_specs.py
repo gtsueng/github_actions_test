@@ -1,6 +1,8 @@
 import json
 import requests
 from pandas import read_csv
+import os
+import pathlib
 
 def get_raw_url(url):
     if 'raw' not in url:
@@ -42,8 +44,10 @@ def merge_specs(spec_list):
 def update_specs():
     spec_list = read_csv('specifications_list.txt',delimiter='\t',header=0)
     bioschemas_json = merge_specs(spec_list)
-    with open('bioschemas.json','wb') as outfile:
+    bioschemasfile = os.path.join(script_path,'bioschemas.json')
+    with open(bioschemasfile,'wb') as outfile:
         json.dump(bioschemas_json,outfile)
 
 #### Main
-update_specs()
+script_path = pathlib.Path(__file__).parent.absolute()
+update_specs(script_path)
