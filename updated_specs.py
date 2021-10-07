@@ -41,7 +41,7 @@ def merge_specs(spec_list):
     bioschemas_json['@graph']=graphlist
     return(bioschemas_json)
 
-def update_specs():
+def update_specs(script_path):
     spec_list = read_csv('specifications_list.txt',delimiter='\t',header=0)
     bioschemas_json = merge_specs(spec_list)
     bioschemasfile = os.path.join(script_path,'bioschemas.json')
