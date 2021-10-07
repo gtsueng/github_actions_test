@@ -2,9 +2,11 @@
 
 name: Github actions update test
 
-on: 
-  schedule: 
-    - cron:  '* * * * *'
+on:
+  push:
+    branches: [ main ] 
+#  schedule: 
+#    - cron:  '* * * * *'
 
 jobs: 
   run:
@@ -36,6 +38,6 @@ jobs:
       shell: bash
     - name: Push changes
       if: steps.commit.outputs.push == 'true'
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@main
       with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
