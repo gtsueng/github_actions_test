@@ -45,8 +45,8 @@ def update_specs(script_path):
     spec_list = read_csv('specifications_list.txt',delimiter='\t',header=0)
     bioschemas_json = merge_specs(spec_list)
     bioschemasfile = os.path.join(script_path,'bioschemas.json')
-    with open(bioschemasfile,'wb') as outfile:
-        json.dump(bioschemas_json,outfile)
+    with open(bioschemasfile,'w') as outfile:
+        json.dumps(bioschemas_json,outfile)
 
 #### Main
 script_path = pathlib.Path(__file__).parent.absolute()
