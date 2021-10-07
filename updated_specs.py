@@ -5,7 +5,10 @@ from pandas import read_csv
 def get_raw_url(url):
     if 'raw' not in url:
         rawrawurl = url.replace('github.com','raw.githubusercontent.com')
-        rawurl = rawrawurl.replace('/blob/master/','/master/')
+        if 'master' in rawrawurl:
+            rawurl = rawrawurl.replace('/blob/master/','/master/')
+        elif 'main' in rawrawurl:
+            rawurl = rawrawurl.replace('/blob/main/','/main/')
     else:
         rawurl = url
     return(rawurl)
