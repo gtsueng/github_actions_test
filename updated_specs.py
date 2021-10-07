@@ -16,7 +16,7 @@ def get_raw_url(url):
 def rename_namespace(spec_list,eachurl,rawtext):
     tmpinfo = spec_list.loc[spec_list['url']==eachurl]
     tmpnamespace = tmpinfo.iloc[0]['namespace']
-    if namespace!='bioschemas':
+    if tmpnamespace!='bioschemas':
         tmptext = '"@id": "'+tmpnamespace+':'
         cleantext = rawtext.replace(tmptext,'"@id": "bioschemas:')
     else:
